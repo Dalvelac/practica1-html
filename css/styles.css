@@ -1,0 +1,411 @@
+/* 
+    Hoja de estilos principal de la practica
+
+    Decisiones generales:
+    - Se emplea la fuente Roboto en peso 300 para cumplir el requisito.
+    - Se combina Flexbox y Grid para maquetar cabecera, articulos y resultados.
+    - Se define un diseño responsivo con media queries para pantallas pequenas.
+*/
+
+/* RESET BASICO Y VARIABLES GENERALES */
+:root {
+    --color-fondo: #f5f6fa;
+    --color-primario: #1f4f96;
+    --color-secundario: #f58220;
+    --color-texto: #222222;
+    --color-texto-suave: #555555;
+    --color-borde-suave: #dddddd;
+    --color-fondo-tarjeta: #ffffff;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300; /* Roboto Light 300 */
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+/* Enlace para saltar contenido: visible solo al enfocar (accesibilidad) */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-primario);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 1rem;
+}
+
+/* CABECERA Y NAVEGACION */
+
+.site-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--color-borde-suave);
+    padding: 0 1.5rem 1.5rem;
+}
+
+/* Barra de navegacion principal */
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 0.75rem 0;
+}
+
+/* Enlace logo UAX en la cabecera */
+.logo-link {
+    text-decoration: none;
+    color: var(--color-primario);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.logo-text {
+    font-size: 1rem;
+}
+
+/* Lista de items del menu */
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cada item se muestra como bloque para que toda el area sea clicable */
+.nav-item {
+    margin: 0;
+}
+
+/* Enlaces del menu: completamente clicables en cualquier area */
+.nav-link {
+    display: block; /* hace que toda el area del li sea clicable */
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--color-texto);
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    background-color: #e7edf9;
+    color: var(--color-primario);
+    box-shadow: 0 0 0 1px var(--color-primario);
+    outline: none;
+}
+
+/* Estado activo del elemento actual del menu */
+.nav-link.active {
+    background-color: var(--color-primario);
+    color: #ffffff;
+    box-shadow: 0 0 0 1px var(--color-primario);
+}
+
+/* HERO CON H1, H2 E IMAGEN */
+
+/* Contenedor principal del hero */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-top: 1.5rem;
+}
+
+/* Parte de texto del hero */
+.hero-text {
+    flex: 1 1 55%;
+}
+
+/* Titulo principal */
+.hero-text h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+}
+
+/* Subtitulo */
+.hero-text h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 0 0 0.75rem;
+    color: var(--color-texto-suave);
+}
+
+/* Pequeña descripcion bajo el subtitulo */
+.hero-description {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--color-texto-suave);
+}
+
+/* Contenedor de la imagen del hero */
+.hero-image {
+    flex: 1 1 40%;
+    margin: 0;
+}
+
+/* Imagen escalable dentro del hero */
+.hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Clase para texto solo visible para lectores de pantalla */
+.sr-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/* CONTENIDO PRINCIPAL */
+
+/* Layout general del main:
+   - En pantallas grandes, grid de dos columnas:
+     articulos a la izquierda, resultados a la derecha.
+*/
+.page-main {
+    max-width: 1100px;
+    margin: 1.5rem auto 2rem;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+/* Seccion de articulos */
+.articles-section h2,
+.results-section h2 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* Grid de tarjetas de articulos (se usa CSS Grid) */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+/* Tarjeta individual de articulo */
+.article-card {
+    background-color: var(--color-fondo-tarjeta);
+    border-radius: 10px;
+    padding: 1rem;
+    border: 1px solid var(--color-borde-suave);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Cabecera del articulo con fuente y titulo */
+.article-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+/* Fuente del articulo (periodico) */
+.article-source {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-secundario);
+    margin: 0;
+}
+
+/* Titulo del articulo */
+.article-card h3 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Parrafo del articulo */
+.article-card p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Enlace al articulo original */
+.article-link {
+    margin-top: auto;
+    align-self: flex-start;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--color-primario);
+    font-weight: 400;
+}
+
+.article-link:hover,
+.article-link:focus {
+    text-decoration: underline;
+}
+
+/* Seccion de resultados de comparacion (aside) */
+.results-section {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--color-borde-suave);
+}
+
+/* Texto introductorio */
+.results-intro {
+    font-size: 0.9rem;
+    color: var(--color-texto-suave);
+    margin-top: 0;
+}
+
+/* Grid de tarjetas de resultados
+   Decision: se usa Grid para cumplir el requisito de maquetar cajas
+*/
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+/* Tarjeta individual de resultado */
+.result-card {
+    background-color: var(--color-fondo-tarjeta);
+    border-radius: 10px;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--color-borde-suave);
+}
+
+/* Titulo del indicador */
+.result-card h3 {
+    font-size: 0.95rem;
+    margin: 0 0 0.3rem;
+}
+
+/* Valor principal del indicador */
+.result-value {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin: 0 0 0.2rem;
+}
+
+/* Detalle adicional */
+.result-detail {
+    font-size: 0.85rem;
+    color: var(--color-texto-suave);
+    margin: 0;
+}
+
+/* PIE DE PAGINA */
+
+.site-footer {
+    border-top: 1px solid var(--color-borde-suave);
+    padding: 1rem 1.5rem 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    background-color: #ffffff;
+}
+
+.site-footer a {
+    color: var(--color-primario);
+    text-decoration: none;
+}
+
+.site-footer a:hover,
+.site-footer a:focus {
+    text-decoration: underline;
+}
+
+.footer-copy {
+    margin-left: 0.5rem;
+}
+
+/* MEDIA QUERIES */
+
+/* 
+    Adaptacion para pantallas medianas:
+    - La columna de articulos pasa a 2 columnas.
+*/
+@media (max-width: 992px) {
+    .articles-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .page-main {
+        grid-template-columns: 3fr 2fr;
+    }
+}
+
+/* 
+    Adaptacion para pantallas pequenas (movil):
+    - Layout de una sola columna.
+    - Hero en columna (texto arriba, imagen abajo).
+    - Menu se compacta y permite salto de linea.
+*/
+@media (max-width: 768px) {
+    .main-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-list {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .hero {
+        flex-direction: column;
+    }
+
+    .page-main {
+        grid-template-columns: 1fr;
+    }
+
+    .articles-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 
+    Ajustes extra para pantallas muy pequenas:
+    - Se reduce ligeramente el tamaño de fuente general.
+*/
+@media (max-width: 480px) {
+    html {
+        font-size: 15px;
+    }
+
+    .logo-text {
+        font-size: 0.9rem;
+    }
+}
