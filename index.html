@@ -2,181 +2,108 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Comparador de articulos - Periodicos</title>
+    <title>Comparador de Articulos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Fuente Roboto Light 300 desde Google Fonts -->
-    <!-- Eleccion: tipografia limpia y moderna para mejorar la legibilidad -->
+    <!-- Roboto Light 300 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
-    <!-- Enlace a la hoja de estilos principal -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Enlace para saltar directamente al contenido principal (accesibilidad) -->
-    <a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
+<div class="layout">
 
-    <!-- CABECERA GENERAL DE LA PAGINA -->
-    <header class="site-header">
-        <!-- Menu de navegacion principal -->
-        <nav class="main-nav" aria-label="Menu principal">
-            <!-- Logo / texto de marca que enlaza a UAX -->
-            <!-- Decision: se usa UAX como punto de entrada por requisito de la practica -->
-            <a class="logo-link" href="https://www.uax.com" target="_blank" rel="noopener noreferrer">
-                <span class="logo-text">UAX Comparador</span>
-            </a>
-
-            <ul class="nav-list">
-                <!-- Cada opcion del menu es completamente clicable gracias al display:block en CSS -->
-                <li class="nav-item">
-                    <a href="#" class="nav-link active" aria-current="page">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#articulos-titulo" class="nav-link">Articulos</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#resultados-titulo" class="nav-link">Comparacion</a>
-                </li>
-                <li class="nav-item">
-                    <!-- Segundo enlace a la universidad (otro texto, misma entidad) -->
-                    <a href="https://www.uax.com" class="nav-link" target="_blank" rel="noopener noreferrer">
-                        Universidad
-                    </a>
-                </li>
-            </ul>
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
+        <h1 class="sidebar-logo">Menu</h1>
+        <nav class="sidebar-nav" aria-label="Menu principal">
+            <a href="#inicio" class="nav-item active" title="Ir al inicio">Inicio</a>
+            <a href="#articulos" class="nav-item" title="Ir a los articulos">Articulos</a>
+            <a href="#comparacion" class="nav-item" title="Ir a la comparacion">Comparacion</a>
+            <a href="https://www.uax.com" target="_blank" rel="noopener noreferrer"
+               class="nav-item" title="Ir a la pagina de UAX">UAX</a>
+            <a href="https://www.uax.com" target="_blank" rel="noopener noreferrer"
+               class="nav-item" title="Ir a la pagina de la universidad">La Universidad</a>
         </nav>
+    </aside>
 
-        <!-- Hero principal con H1, H2 e imagen agrupados de forma logica -->
-        <div class="hero">
-            <div class="hero-text">
-                <!-- Titulo principal de la pagina -->
-                <h1>Comparador de articulos de prensa</h1>
-                <!-- Subtitulo que explica el proposito -->
-                <h2>Compara como distintos periodicos tratan la misma noticia</h2>
-                <p class="hero-description">
-                    Selecciona varios articulos de actualidad y observa diferencias en tono, datos y enfoque.
-                </p>
+    <!-- ZONA DERECHA: CABECERA + CONTENIDO -->
+    <div class="content-area">
+
+        <!-- CABECERA SUPERIOR -->
+        <header id="inicio" class="topbar">
+            <div class="topbar-left">
+                <span class="topbar-title">Comparador de Articulos</span>
             </div>
 
-            <!-- Contenedor de imagen ilustrativa -->
-            <!-- Decision: la imagen es decorativa, pero se deja alt descriptivo simple -->
-            <figure class="hero-image">
-                <img src="img/portada-periodicos.jpg" alt="Portada de periodicos con titulares">
-                <figcaption class="sr-only">
-                    Imagen decorativa de varias portadas de periodicos
-                </figcaption>
-            </figure>
-        </div>
-    </header>
-
-    <!-- CONTENIDO PRINCIPAL -->
-    <main id="contenido-principal" class="page-main">
-        <!-- Seccion de articulos seleccionados -->
-        <section class="articles-section" aria-labelledby="articulos-titulo">
-            <h2 id="articulos-titulo">Articulos seleccionados</h2>
-            <!-- Grid de tarjetas de articulos -->
-            <div class="articles-grid">
-                <!-- Articulo 1 -->
-                <article class="article-card">
-                    <header class="article-header">
-                        <p class="article-source">El Pais · Economia</p>
-                        <h3>La nueva reforma fiscal divide a los expertos</h3>
-                    </header>
-                    <p>
-                        El diario analiza el impacto de la reforma sobre las rentas medias,
-                        destacando un aumento de la presion sobre el consumo y dudas sobre
-                        el efecto en la recaudacion.
-                    </p>
-                    <a href="#" class="article-link">Ver articulo original</a>
-                </article>
-
-                <!-- Articulo 2 -->
-                <article class="article-card">
-                    <header class="article-header">
-                        <p class="article-source">El Mundo · Politica</p>
-                        <h3>Debate en el parlamento por la subida de impuestos</h3>
-                    </header>
-                    <p>
-                        El texto pone el foco en la discusion politica, resaltando las criticas
-                        de la oposicion y la defensa del Gobierno sobre la necesidad de la medida.
-                    </p>
-                    <a href="#" class="article-link">Ver articulo original</a>
-                </article>
-
-                <!-- Articulo 3 -->
-                <article class="article-card">
-                    <header class="article-header">
-                        <p class="article-source">La Vanguardia · Sociedad</p>
-                        <h3>Las familias ajustan su presupuesto ante los cambios</h3>
-                    </header>
-                    <p>
-                        El reportaje se centra en testimonios de ciudadanos que adaptan sus gastos
-                        diarios, destacando la preocupacion por el aumento de precios.
-                    </p>
-                    <a href="#" class="article-link">Ver articulo original</a>
-                </article>
+            <div class="topbar-center">
+                <span class="topbar-uni">Universidad Alfonso X el Sabio</span>
             </div>
-        </section>
 
-        <!-- Seccion de resultados de la comparacion -->
-        <!-- Decision: se usa <aside> porque complementa la informacion principal -->
-        <aside class="results-section" aria-labelledby="resultados-titulo">
-            <h2 id="resultados-titulo">Resultados de la comparacion</h2>
-            <p class="results-intro">
-                Resumen de indicadores basicos obtenidos a partir de los articulos analizados.
+            <div class="topbar-right">
+                <img src="img/logo-gta.png" alt="Logo decorativo" class="topbar-logo">
+            </div>
+        </header>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="main-content">
+            <!-- TARJETAS DE ARTICULOS -->
+            <section id="articulos" class="section">
+                <article class="card article-card">
+                    <h2 class="article-title">Articulo 1: Innovacion Tecnologica</h2>
+                    <p class="article-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula neque at justo tristique,
+                        in convallis urna vehicula. Curabitur nec turpis nec nulla consequat tristique. Proin sed libero eu sem
+                        dapibus varius.
+                    </p>
+                    <ul class="article-list">
+                        <li><strong>Ventaja:</strong> Actualizacion constante de noticias.</li>
+                        <li><strong>Desventaja:</strong> Filtro de calidad variable.</li>
+                    </ul>
+                </article>
+
+                <article class="card article-card">
+                    <h2 class="article-title">Articulo 2: Impacto de la IA en la Sociedad</h2>
+                    <p class="article-text">
+                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce efficitur
+                        mi ut nulla egestas. Phasellus non sapien eget urna malesuada dapibus. Aliquam erat volutpat.
+                    </p>
+                    <ul class="article-list">
+                        <li><strong>Ventaja:</strong> Optimizacion de tareas repetitivas.</li>
+                        <li><strong>Desventaja:</strong> Riesgos eticos a considerar.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <!-- RESULTADOS DE LA COMPARACION -->
+            <section id="comparacion" class="section">
+                <div class="results-header">
+                    <h2>Resultados de la Comparacion</h2>
+                </div>
+
+                <div class="card results-card">
+                    <div class="result-row">
+                        <span class="result-label">Articulo A</span>
+                        <span class="result-badge">85%</span>
+                    </div>
+                    <div class="result-row">
+                        <span class="result-label">Articulo B</span>
+                        <span class="result-badge">78%</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- PIE DE PAGINA -->
+        <footer class="footer">
+            <p>
+                &copy; 2024 Universidad Alfonso X el Sabio -
+                <a href="https://www.uax.com" target="_blank" rel="noopener noreferrer">https://www.uax.com</a>
             </p>
-
-            <!-- Cajas de resultados maquetadas con Grid / Flex -->
-            <div class="results-grid">
-                <section class="result-card">
-                    <h3>Sentimiento medio</h3>
-                    <p class="result-value">Tono moderadamente negativo</p>
-                    <p class="result-detail">
-                        Predominan terminos asociados a incertidumbre y subida de precios.
-                    </p>
-                </section>
-
-                <section class="result-card">
-                    <h3>Foco principal</h3>
-                    <p class="result-value">Impacto en las familias</p>
-                    <p class="result-detail">
-                        Dos de los tres periodicos destacan el efecto en el presupuesto domestico.
-                    </p>
-                </section>
-
-                <section class="result-card">
-                    <h3>Datos citados</h3>
-                    <p class="result-value">3 estudios y 2 informes</p>
-                    <p class="result-detail">
-                        Solo un articulo menciona fuentes oficiales de forma detallada.
-                    </p>
-                </section>
-
-                <section class="result-card">
-                    <h3>Nivel de opinion</h3>
-                    <p class="result-value">Alto</p>
-                    <p class="result-detail">
-                        Los textos mezclan informacion objetiva con valoraciones editoriales.
-                    </p>
-                </section>
-            </div>
-        </aside>
-    </main>
-
-    <!-- PIE DE PAGINA -->
-    <footer class="site-footer">
-        <p>
-            <!-- Enlace a la universidad (requisito) -->
-            <a href="https://www.uax.com" target="_blank" rel="noopener noreferrer">
-                Universidad Alfonso X el Sabio (UAX)
-            </a>
-            <!-- Simbolo de copyright como © -->
-            <span class="footer-copy" aria-label="Copyright">
-                © 2024 Comparador de articulos
-            </span>
-        </p>
-    </footer>
+        </footer>
+    </div>
+</div>
 </body>
 </html>
